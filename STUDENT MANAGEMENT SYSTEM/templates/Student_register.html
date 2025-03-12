@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration - Cathsam Schools</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a2e;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .register-container {
+            background-color: #16213e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            text-align: center;
+            position: relative;
+            overflow: visible;
+        }
+        .register-container::before, .register-container::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border-radius: 8px;
+            z-index: -1;
+            background: linear-gradient(45deg, #0f3460, #1a1a2e, #0f3460, #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            opacity: 0.5;
+        }
+        .register-container::after {
+            filter: blur(10px);
+        }
+        .register-container:hover::before, .register-container:hover::after {
+            background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
+            animation: gradient-hover 5s ease infinite;
+            opacity: 1;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes gradient-hover {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .register-container h2 {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #0f3460;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0e295f;
+        }
+        .links {
+            margin-top: 15px;
+        }
+        .links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .school-name {
+            font-size: 24px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #0f3460, #1a1a2e, #0f3460, #1a1a2e);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 15s ease infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="school-name">Cathsam Schools</div>
+        <h2>Student Registration</h2>
+        <form action="{{ url_for('student_register') }}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="student-id">Student ID:</label>
+                <input type="text" id="student-id" name="student-id" required>
+            </div>
+            <div class="form-group">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="year-of-admission">Year of Admission:</label>
+                <input type="text" id="year-of-admission" name="year-of-admission" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="profile-picture">Profile Picture:</label>
+                <input type="file" id="profile-picture" name="profile-picture" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <div class="links">
+            <a href="{{ url_for('student_login') }}">Back to Login</a>
+        </div>
+    </div>
+</body>
+</html>
